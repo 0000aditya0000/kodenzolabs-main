@@ -1,0 +1,64 @@
+{
+  "summary": "Frontend-only E2E testing for Kodenzo Labs marketing site. Covered all 13 routes (Home, About, Services hub, 7 service detail pages, Industries, Portfolio, Process, Blog, Careers, Contact, Privacy, Terms, 404), the navbar mega menu (hover), mobile hamburger menu (375px), Portfolio industry filtering, Blog search, Contact + Careers + Newsletter form validation & success states, FAQ accordion, role pre-fill from Open Positions, document.title per route, alt-text accessibility, and horizontal-scroll responsiveness. All flows working; zero console/page errors observed across all routes tested. One minor UX issue with Blog search noted below.",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [
+      {
+        "flow": "Blog search",
+        "issue": "Typing 'AI' in the blog search returns 0 posts even though 3 posts are tagged with the category 'AI Engineering'. Search currently matches only title + excerpt, neither of which contains the literal substring 'ai' in any of the 8 posts. As a user-facing search this feels broken — the category should also be included in the search predicate (and ideally tags/author too).",
+        "affected_selectors": ["[data-testid=\"blog-search-input\"]", "[data-testid^=\"blog-post-\"]"]
+      }
+    ],
+    "design_issues": []
+  },
+  "test_report_links": [],
+  "action_items": [
+    "(Minor UX) Extend Blog filter predicate in /app/frontend/src/pages/Blog.jsx (line 24) to also match against p.category — e.g. `p.category.toLowerCase().includes(q)` — so that searching 'AI' surfaces the AI Engineering posts. Today the test instruction 'typing AI filters posts' technically filters (to zero), but the spirit of the spec is that users should see the AI articles."
+  ],
+  "critical_code_review_comments": [
+    "Blog search is title+excerpt only; consider also matching category and/or tags for a more intuitive search.",
+    "All other code is well-structured: data-testid coverage is excellent across navbar, hero, forms, mega menu, mobile menu, FAQ, portfolio cards/filters, blog posts/categories, industry cards, open roles, footer/newsletter, and 404 page.",
+    "Forms (Contact, Careers, Newsletter) all show clean inline error states for empty submits and reset on success via sonner toast — matches the frontend-only spec.",
+    "No backend calls anywhere as per user choice; no mocked APIs; no console errors detected on any route.",
+    "Navbar mega menu correctly opens on hover and contains all 7 service slugs with proper data-testid='mega-<slug>'.",
+    "Mobile (375px) shows hamburger and the mobile-menu drawer correctly; no horizontal overflow detected (scrollWidth==clientWidth==375).",
+    "All 6 home images have alt attributes; industries page images also all have alt attributes."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "N/A (frontend-only build)", "frontend": "~98% (1 minor UX behavior on blog search)"},
+  "seed_data_creation": "None — site uses hand-written static data files in /app/frontend/src/data/.",
+  "retest_needed": false,
+  "should_main_agent_self_test": true,
+  "context_for_next_testing_agent": "Site is a CRA + React 19 + React Router v7 + Tailwind + Framer Motion + Lucide marketing site at https://ai-engineering-hub-15.preview.emergentagent.com. Hover (not click) to open Services mega menu. Portfolio/Blog filter testids are lowercased: portfolio-filter-fintech, blog-cat-ai-engineering, etc. Cards' testid prefix collides with filter buttons — when counting cards by [data-testid^='portfolio-'] you must exclude '-filter-' and '-cta-' descendants. All form submissions are simulated client-side via sonner toast — no backend.",
+  "rca_of_the_issue": {
+    "issue": "Blog search for 'AI' returns 0 results",
+    "reproduction": "1) Navigate to /blog. 2) Type 'AI' (or 'ai') in [data-testid='blog-search-input']. 3) Observe empty state 'No articles match your search.'",
+    "root_cause": "In /app/frontend/src/pages/Blog.jsx (line 24), the search predicate only inspects p.title and p.excerpt. None of the 8 blog posts in /app/frontend/src/data/blog.js contain the substring 'ai' in their title or excerpt, even though three of them are categorised 'AI Engineering'.",
+    "mitigation": "Add `|| p.category.toLowerCase().includes(q)` to the matchesQuery expression. Optionally also include tags/author if added later."
+  },
+  "tested_routes": [
+    "/",
+    "/about",
+    "/services",
+    "/services/software-development",
+    "/services/web-development",
+    "/services/mobile-app-development",
+    "/services/ai-services",
+    "/services/data-annotation",
+    "/services/game-development",
+    "/services/custom-software",
+    "/industries",
+    "/portfolio",
+    "/process",
+    "/blog",
+    "/careers",
+    "/contact",
+    "/privacy-policy",
+    "/terms",
+    "/foo-bar (404)"
+  ]
+}
