@@ -1,0 +1,231 @@
+{
+  "project_overview": {
+    "name": "Kodenzo Labs",
+    "type": "premium_corporate_website",
+    "tone": "Calm confidence, engineering-grade precision blended with AI-future warmth. Premium, quiet, deliberate.",
+    "tech_stack": [
+      "React 19",
+      "React Router v7",
+      "Tailwind CSS",
+      "Framer Motion",
+      "Lucide React",
+      "Shadcn UI"
+    ]
+  },
+  "design_system": {
+    "theme_strategy": "Sophisticated Dual-Tone Hybrid. The navbar, hero sections, and footer use an Obsidian Dark theme to natively house the teal/black logo. Content sections transition to a clean, highly breathable Off-White Light theme. This reconciles the brand tension while maintaining a Stripe/Linear aesthetic.",
+    "colors": {
+      "dark_mode": {
+        "background": "#0A0A0A",
+        "surface": "#111111",
+        "surface_glass": "rgba(10, 10, 10, 0.7)",
+        "text_primary": "#FFFFFF",
+        "text_muted": "#A1A1AA",
+        "border": "rgba(255, 255, 255, 0.1)"
+      },
+      "light_mode": {
+        "background": "#F8FAFC",
+        "surface": "#FFFFFF",
+        "surface_glass": "rgba(255, 255, 255, 0.7)",
+        "text_primary": "#111827",
+        "text_muted": "#6B7280",
+        "border": "rgba(17, 24, 39, 0.05)"
+      },
+      "brand": {
+        "primary_blue": "#335EEA",
+        "primary_teal": "#35b7a1",
+        "gradient_accent": "linear-gradient(135deg, #35b7a1 0%, #335EEA 100%)",
+        "gradient_text": "bg-clip-text text-transparent bg-gradient-to-r from-[#35b7a1] to-[#335EEA]"
+      }
+    },
+    "typography": {
+      "heading_font": "Cabinet Grotesk, system-ui, sans-serif",
+      "body_font": "Geist, system-ui, sans-serif",
+      "scale": {
+        "h1": "text-5xl sm:text-6xl lg:text-7xl font-black tracking-tighter",
+        "h2": "text-4xl sm:text-5xl font-extrabold tracking-tight",
+        "h3": "text-2xl sm:text-3xl font-bold tracking-tight",
+        "h4": "text-xl sm:text-2xl font-semibold",
+        "body_lg": "text-lg sm:text-xl leading-relaxed",
+        "body": "text-base leading-relaxed",
+        "label": "text-sm font-medium tracking-wide uppercase"
+      }
+    },
+    "spacing_and_radius": {
+      "card_radius": "rounded-[24px]",
+      "navbar_radius": "rounded-[999px]",
+      "button_radius": "rounded-[999px]",
+      "section_padding": "py-24 sm:py-32"
+    },
+    "effects": {
+      "shadow_premium": "shadow-[0_8px_30px_rgb(0,0,0,0.04)]",
+      "shadow_glow_blue": "shadow-[0_0_40px_-10px_rgba(51,94,234,0.3)]",
+      "shadow_glow_teal": "shadow-[0_0_40px_-10px_rgba(53,183,161,0.3)]",
+      "glass_dark": "backdrop-blur-xl bg-[#0A0A0A]/70 border border-white/10",
+      "glass_light": "backdrop-blur-xl bg-white/70 border border-gray-200"
+    }
+  },
+  "animation_system": {
+    "framer_motion": {
+      "fade_up": { "initial": { "opacity": 0, "y": 20 }, "whileInView": { "opacity": 1, "y": 0 }, "viewport": { "once": true, "margin": "-100px" } },
+      "stagger_container": { "hidden": { "opacity": 0 }, "show": { "opacity": 1, "transition": { "staggerChildren": 0.1 } } },
+      "hover_lift": { "whileHover": { "y": -8, "transition": { "duration": 0.3, "ease": "easeOut" } } },
+      "button_tap": { "whileTap": { "scale": 0.98 } }
+    },
+    "transitions": {
+      "spring_smooth": { "type": "spring", "stiffness": 100, "damping": 20 },
+      "ease_custom": [0.16, 1, 0.3, 1]
+    }
+  },
+  "component_recipes": {
+    "navbar": {
+      "structure": "Fixed top-4 left-1/2 -translate-x-1/2 w-[95%] max-w-7xl z-50 transition-all duration-300",
+      "styling": "rounded-[999px] backdrop-blur-xl bg-[#0A0A0A]/80 border border-white/10 px-6 py-4 flex justify-between items-center",
+      "links": "text-white/80 hover:text-white transition-colors text-sm font-medium",
+      "cta": "bg-gradient-to-r from-[#35b7a1] to-[#335EEA] text-white px-6 py-2 rounded-[999px] font-medium hover:shadow-glow_teal transition-all"
+    },
+    "hero_dark": {
+      "styling": "min-h-[90vh] bg-[#0A0A0A] flex flex-col justify-center relative overflow-hidden text-white pt-32",
+      "background_elements": "Absolute positioned blurred blobs. Top right: bg-[#335EEA]/20 w-[500px] h-[500px] blur-[120px] rounded-full. Bottom left: bg-[#35b7a1]/20 w-[400px] h-[400px] blur-[100px] rounded-full.",
+      "content": "Centered text layout. H1 with gradient text span on key words. Two CTAs (Primary Gradient, Secondary Outline)."
+    },
+    "bento_card": {
+      "styling": "bg-white rounded-[24px] p-8 border border-gray-100 shadow-premium group relative overflow-hidden",
+      "hover_effect": "Framer motion hover lift. Icon container scales up slightly. Subtle gradient border reveal on hover.",
+      "content": "Lucide icon (stroke #335EEA), H3 title, text-muted description, 'Learn more' link with arrow."
+    },
+    "footer": {
+      "styling": "bg-[#0A0A0A] text-white pt-24 pb-12 border-t border-white/10",
+      "layout": "Grid cols-1 md:grid-cols-4 gap-12. Brand column with Teal logo. Quick links, Services, Legal.",
+      "bottom": "Flex justify-between items-center pt-8 border-t border-white/10 text-white/50 text-sm"
+    }
+  },
+  "page_blueprints": {
+    "home": {
+      "path": "/",
+      "sections": [
+        { "name": "Hero", "type": "hero_dark", "content": "Building Future-Ready Software Powered by AI." },
+        { "name": "Tech Stack Marquee", "type": "dark_band", "content": "React, Node, AWS, OpenAI, etc. continuously scrolling." },
+        { "name": "Company Intro", "type": "light_section", "content": "Text-heavy mission statement. Large typography." },
+        { "name": "Services Bento", "type": "light_section", "content": "12 services in a 4-col bento grid." },
+        { "name": "Process Timeline", "type": "light_section", "content": "Horizontal or vertical animated steps." },
+        { "name": "Portfolio Preview", "type": "light_section", "content": "Featured case studies." },
+        { "name": "CTA", "type": "dark_section", "content": "Ready to build? Book consultation." }
+      ]
+    },
+    "about": {
+      "path": "/about",
+      "sections": [
+        { "name": "Hero", "type": "hero_dark", "content": "The minds behind the machines." },
+        { "name": "Story", "type": "light_section", "content": "Two-column layout. Text and Unsplash office image." },
+        { "name": "Stats", "type": "light_section", "content": "Animated counters (Years, Projects, Experts)." },
+        { "name": "Team", "type": "light_section", "content": "Grid of team members." }
+      ]
+    },
+    "services_hub": {
+      "path": "/services",
+      "sections": [
+        { "name": "Hero", "type": "hero_dark", "content": "Enterprise-grade capabilities." },
+        { "name": "Bento Grid", "type": "light_section", "content": "12 service cards linking to details." }
+      ]
+    },
+    "service_details": {
+      "paths": ["/services/software-development", "/services/web-development", "/services/mobile-app-development", "/services/ai-services", "/services/data-annotation", "/services/game-development", "/services/custom-software"],
+      "sections": [
+        { "name": "Hero", "type": "hero_dark", "content": "Service specific title and SVG abstract graphic." },
+        { "name": "Overview & Benefits", "type": "light_section", "content": "Split layout. Business impact." },
+        { "name": "Features", "type": "light_section", "content": "Grid of specific offerings." },
+        { "name": "Process & Tech", "type": "light_section", "content": "How we build it." },
+        { "name": "FAQ & CTA", "type": "light_section", "content": "Accordions and final push." }
+      ]
+    },
+    "industries": {
+      "path": "/industries",
+      "sections": [
+        { "name": "Hero", "type": "hero_dark", "content": "Transforming every sector." },
+        { "name": "Grid", "type": "light_section", "content": "12 industry cards with Lucide icons." }
+      ]
+    },
+    "portfolio": {
+      "path": "/portfolio",
+      "sections": [
+        { "name": "Hero", "type": "hero_dark", "content": "Our best work." },
+        { "name": "Grid", "type": "light_section", "content": "Large screenshot cards with tech badges." }
+      ]
+    },
+    "process": {
+      "path": "/process",
+      "sections": [
+        { "name": "Hero", "type": "hero_dark", "content": "How we deliver excellence." },
+        { "name": "Timeline", "type": "light_section", "content": "Discovery to Support animated path." }
+      ]
+    },
+    "careers": {
+      "path": "/careers",
+      "sections": [
+        { "name": "Hero", "type": "hero_dark", "content": "Join the revolution." },
+        { "name": "Benefits", "type": "light_section", "content": "Grid of perks." },
+        { "name": "Positions", "type": "light_section", "content": "List of open roles." }
+      ]
+    },
+    "blog": {
+      "path": "/blog",
+      "sections": [
+        { "name": "Hero", "type": "hero_dark", "content": "Insights & Engineering." },
+        { "name": "Grid", "type": "light_section", "content": "Article cards with Unsplash covers." }
+      ]
+    },
+    "contact": {
+      "path": "/contact",
+      "sections": [
+        { "name": "Hero", "type": "hero_dark", "content": "Let's talk." },
+        { "name": "Split Form", "type": "light_section", "content": "Form on left, Info & Map placeholder on right." }
+      ]
+    },
+    "legal": {
+      "paths": ["/privacy-policy", "/terms"],
+      "sections": [
+        { "name": "Content", "type": "light_section", "content": "Prose/Typography optimized reading layout." }
+      ]
+    },
+    "404": {
+      "path": "*",
+      "sections": [
+        { "name": "Hero", "type": "hero_dark", "content": "404 - Lost in the cloud. Back home button." }
+      ]
+    }
+  },
+  "media_assets": {
+    "logo": {
+      "url": "https://customer-assets.emergentagent.com/job_ai-engineering-hub-15/artifacts/oun8gc1z_KODENZO%20LABS%20LOGO.png",
+      "usage": "Use strictly in the dark Navbar and dark Footer to ensure the teal text pops against the #0A0A0A background."
+    },
+    "team_and_office": [
+      "https://images.unsplash.com/photo-1522071820081-009f0129c71c",
+      "https://images.unsplash.com/photo-1556761175-b413da4baf72",
+      "https://images.pexels.com/photos/6805161/pexels-photo-6805161.jpeg",
+      "https://images.pexels.com/photos/6804068/pexels-photo-6804068.jpeg"
+    ],
+    "abstract_dashboards_portfolio": [
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA2ODl8MHwxfHNlYXJjaHwxfHxzb2Z0d2FyZSUyMGRhc2hib2FyZCUyMGFic3RyYWN0fGVufDB8fHx8MTc4Mjc4NzUwOHww&ixlib=rb-4.1.0&q=85",
+      "https://images.unsplash.com/photo-1686061592689-312bbfb5c055?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA2ODl8MHwxfHNlYXJjaHw0fHxzb2Z0d2FyZSUyMGRhc2hib2FyZCUyMGFic3RyYWN0fGVufDB8fHx8MTc4Mjc4NzUwOHww&ixlib=rb-4.1.0&q=85",
+      "https://images.unsplash.com/photo-1686061594225-3e92c0cd51b0?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA2ODl8MHwxfHNlYXJjaHwzfHxzb2Z0d2FyZSUyMGRhc2hib2FyZCUyMGFic3RyYWN0fGVufDB8fHx8MTc4Mjc4NzUwOHww&ixlib=rb-4.1.0&q=85",
+      "https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA2ODl8MHwxfHNlYXJjaHwyfHxzb2Z0d2FyZSUyMGRhc2hib2FyZCUyMGFic3RyYWN0fGVufDB8fHx8MTc4Mjc4NzUwOHww&ixlib=rb-4.1.0&q=85"
+    ],
+    "blog_covers": [
+      "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxODF8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBkZXNrJTIwbGFwdG9wfGVufDB8fHx8MTc4Mjc4NzUwOHww&ixlib=rb-4.1.0&q=85",
+      "https://images.unsplash.com/photo-1526657782461-9fe13402a841?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxODF8MHwxfHNlYXJjaHw0fHxtb2Rlcm4lMjBkZXNrJTIwbGFwdG9wfGVufDB8fHx8MTc4Mjc4NzUwOHww&ixlib=rb-4.1.0&q=85",
+      "https://images.unsplash.com/photo-1487017159836-4e23ece2e4cf?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxODF8MHwxfHNlYXJjaHwzfHxtb2Rlcm4lMjBkZXNrJTIwbGFwdG9wfGVufDB8fHx8MTc4Mjc4NzUwOHww&ixlib=rb-4.1.0&q=85",
+      "https://images.unsplash.com/photo-1471897488648-5eae4ac6686b?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxODF8MHwxfHNlYXJjaHwyfHxtb2Rlcm4lMjBkZXNrJTIwbGFwdG9wfGVufDB8fHx8MTc4Mjc4NzUwOHww&ixlib=rb-4.1.0&q=85"
+    ],
+    "illustration_strategy": "Use pure SVG shapes, abstract geometric patterns, and Lucide React icons for service descriptors. No flat illustration characters (e.g., undraw). Use pure code/SVG for a tech-heavy, Stripe-like feel."
+  },
+  "technical_rules": {
+    "file_extensions": "All files must be .js or .jsx, NOT .tsx. The environment uses Create React App.",
+    "routing": "Use React Router v7. Implement a Layout wrapper component for the Navbar and Footer to persist across all 19 pages.",
+    "testing": "All interactive and key informational elements MUST include a `data-testid` attribute (e.g., data-testid='hero-cta-button').",
+    "accessibility": "Ensure high contrast, aria-labels on icon buttons, semantic HTML5 structure.",
+    "components": "Use Shadcn UI where applicable (e.g., Accordion for FAQs, Form elements), but heavily customize to match the exact spacing and radius (24px) guidelines.",
+    "icons": "Use Lucide React. No emojis."
+  }
+}
